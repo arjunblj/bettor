@@ -21,7 +21,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
   });
   $stateProvider.state('callback', {
     url: '/oauth-callback',
-    templateUrl: 'templates/test.html',
     controller: 'LoginController'
   });
   $stateProvider.state('feed', {
@@ -29,12 +28,40 @@ app.config(function($stateProvider, $urlRouterProvider) {
     templateUrl: 'templates/feed.html',
     controller: 'FeedController'
   });
+  $stateProvider.state('compose', {
+    url: '/compose',
+    templateUrl: 'templates/compose.html',
+    controller: 'ComposeController'
+  });
+  $stateProvider.state('detail', {
+    url: '/bet/:bet_id',
+    controller: 'BetDetailController'
+  });
+  $stateProvider.state('enter-phone', {
+    url: '/submit-phone',
+    templateUrl: 'templates/enter_phone.html',
+    controller: 'SubmitPhoneController'
+  });
+  $stateProvider.state('verify-code', {
+    url: '/verify-code',
+    templateUrl: 'templates/verify-code.html',
+    controller: 'VerifyCodeController'
+  });
   $urlRouterProvider.otherwise('/');
 });
 
 var app;
 
 app = angular.module('app');
+
+app.controller('NavigationController', function($scope, $location, $state, $window) {
+  $scope.createVariable = function(url) {
+    return $window.location.href = url;
+  };
+  return $scope.createFixed = function() {
+    return $window.location.href = '/#/compose';
+  };
+});
 
 app.controller('LoginController', function($scope, $stateParams) {
   return $scope.oauthVenmo = function() {
@@ -50,9 +77,15 @@ app.controller('LoginController', function($scope, $stateParams) {
   };
 });
 
-app.controller('FeedController', function($scope, $stateParams) {
-  return console.log('ufguewgf');
-});
+app.controller('FeedController', function($scope, $stateParams) {});
+
+app.controller('ComposeController', function($scope, $stateParams) {});
+
+app.controller('BetDetailController', function($scope, $stateParams) {});
+
+app.controller('SubmitPhoneController', function($scope, $stateParams) {});
+
+app.controller('VerifyCodeController', function($scope, $stateParams) {});
 
 var app, _base, _base1;
 

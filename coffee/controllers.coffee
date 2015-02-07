@@ -1,6 +1,15 @@
 
 app = angular.module('app')
 
+app.controller('NavigationController', ($scope, $location, $state, $window) ->
+
+    $scope.createVariable = (url) ->
+      $window.location.href = url
+
+    $scope.createFixed = () ->
+      $window.location.href = '/#/compose'
+)
+
 app.controller('LoginController', ($scope, $stateParams) ->
 
   $scope.oauthVenmo = ->
@@ -16,7 +25,16 @@ app.controller('LoginController', ($scope, $stateParams) ->
 )
 
 app.controller('FeedController', ($scope, $stateParams) ->
+)
 
-  console.log 'ufguewgf'
+app.controller('ComposeController', ($scope, $stateParams) ->
+)
 
+app.controller('BetDetailController', ($scope, $stateParams) ->
+)
+
+app.controller('SubmitPhoneController', ($scope, $stateParams) ->
+)
+
+app.controller('VerifyCodeController', ($scope, $stateParams) ->
 )
