@@ -18,10 +18,16 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/',
     templateUrl: 'templates/login.html',
     controller: 'LoginController'
-  }).state('app.oauth_callback', {
+  });
+  $stateProvider.state('callback', {
     url: '/oauth-callback',
     templateUrl: 'templates/test.html',
     controller: 'LoginController'
+  });
+  $stateProvider.state('feed', {
+    url: '/feed',
+    templateUrl: 'templates/feed.html',
+    controller: 'FeedController'
   });
   $urlRouterProvider.otherwise('/');
 });
@@ -42,6 +48,10 @@ app.controller('LoginController', function($scope, $stateParams) {
       }
     });
   };
+});
+
+app.controller('FeedController', function($scope, $stateParams) {
+  return console.log('ufguewgf');
 });
 
 var app, _base, _base1;

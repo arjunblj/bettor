@@ -15,10 +15,18 @@ app.config ($stateProvider, $urlRouterProvider) ->
     url: '/'
     templateUrl: 'templates/login.html'
     controller: 'LoginController'
-  ).state('app.oauth_callback',
+  )
+
+  $stateProvider.state('callback',
     url: '/oauth-callback'
     templateUrl: 'templates/test.html'
     controller: 'LoginController'
+  )
+
+  $stateProvider.state('feed',
+    url: '/feed'
+    templateUrl: 'templates/feed.html'
+    controller: 'FeedController'
   )
 
   # If none of the above states are matched, use this as the fallback.

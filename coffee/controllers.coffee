@@ -14,3 +14,9 @@ app.controller('LoginController', ($scope, $stateParams) ->
         ref.close()
     )
 )
+
+app.controller('FeedController', ($scope, $stateParams) ->
+
+  console.log 'ufguewgf'
+
+)

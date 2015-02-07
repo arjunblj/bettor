@@ -4,3 +4,12 @@
   margin: 50px auto;
   width: 96px;
   height: 96px; }
+
+.main-feed .thumb {
+  border-radius: 20% !important; }
+.main-feed .title, .main-feed .dollar {
+  display: inline; }
+.main-feed .title {
+  text-align: left; }
+.main-feed .dollar {
+  text-align: right; }
