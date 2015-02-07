@@ -1,6 +1,6 @@
 var app;
 
-app = angular.module("app", ["ionic"]);
+app = angular.module('app', ['ionic', 'ionic.ion.headerShrink']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -11,4 +11,12 @@ app.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
   });
+});
+
+app.config(function($stateProvider, $urlRouterProvider) {
+  $stateProvider.state('home', {
+    url: '/',
+    templateUrl: 'templates/login.html'
+  });
+  $urlRouterProvider.otherwise('/');
 });

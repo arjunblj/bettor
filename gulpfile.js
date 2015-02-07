@@ -10,14 +10,14 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss'],
+  sass: ['./scss/*.scss'],
   coffee: ['./coffee/*.coffee']
 };
 
 gulp.task('default', ['sass', 'coffee', 'concatenate']);
 
 gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
+  gulp.src(paths.sass)
     .pipe(sass())
     .pipe(gulp.dest('./www/css/'))
     .pipe(minifyCss({
