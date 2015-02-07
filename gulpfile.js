@@ -14,7 +14,7 @@ var paths = {
   coffee: ['./coffee/*.coffee']
 };
 
-gulp.task('default', ['sass', 'coffee']);
+gulp.task('default', ['sass', 'coffee', 'concatenate']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -37,6 +37,12 @@ gulp.task('coffee', function() {
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.coffee, ['coffee']);
+});
+
+gulp.task('concatenate', function() {
+  return gulp.src('./www/lib/vendor/*.js')
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest('./www/js/'));
 });
 
 gulp.task('install', ['git-check'], function() {
