@@ -1,6 +1,10 @@
 
 app = angular.module('app')
 
+# http://stackoverflow.com/a/646643
+String::startsWith ?= (s) -> @[...s.length] is s
+String::endsWith   ?= (s) -> s is '' or @[-s.length..] is s
+
 app.factory '$localstorage', ['$window', ($window) ->
 
   set = ->

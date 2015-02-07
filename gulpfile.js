@@ -7,6 +7,7 @@ var sass = require('gulp-sass');
 var coffee = require('gulp-coffee');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 var sh = require('shelljs');
 
 var paths = {
@@ -31,6 +32,7 @@ gulp.task('sass', function(done) {
 gulp.task('coffee', function() {
   gulp.src(paths.coffee)
     .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(concat('app.js'))
     .pipe(gulp.dest('./www/js/'))
 });
 
