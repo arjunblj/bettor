@@ -11,10 +11,10 @@ var sh = require('shelljs');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
-  coffee: ['./www/coffee/*.coffee']
+  coffee: ['./coffee/*.coffee']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['sass', 'coffee']);
 
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
@@ -29,13 +29,14 @@ gulp.task('sass', function(done) {
 });
 
 gulp.task('coffee', function() {
-  gulp.src('./www/coffee/*.coffee')
+  gulp.src(paths.coffee)
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(gulp.dest('./www/js/'))
 });
 
 gulp.task('watch', function() {
   gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.coffee, ['coffee']);
 });
 
 gulp.task('install', ['git-check'], function() {

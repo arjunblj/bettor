@@ -1,7 +1,7 @@
 {
   "name": "bettor",
   "version": "0.0.1",
-  "description": "bettor: An Ionic project",
+  "description": "make bets. have fun.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
