@@ -1,8 +1,4 @@
 
-// ion-content {
-//   top: 0 !important;
-// }
-
 @font-face {
   font-family: 'fontawesome';
   src:url('../fonts/fontawesome-webfont.eot');
@@ -14,17 +10,21 @@
   font-style: normal;
 }
 
+$venmo-blue: #179de5 !default;
+
+.login {
+  .ionic-logo                     {display: block; border: none; margin: 50px auto; width: 96px; height: 96px;}
+  .sign-up                        {background-color:$venmo-blue; margin:0 auto; width:60%;}
+}
+
+.phone-entry {
+  .tel-field                      {border-bottom:1px dotted #ccc;}
+  .submit                         {background-color:$venmo-blue; color:#fff !important; width:60%;}
+}
+
 .icon-plus {
   :before                         {font-family: 'fontawesome';}
   :after                          {border: none !important;}
-}
-
-.ionic-logo {
-  display: block;
-  border: none;
-  margin: 50px auto;
-  width: 96px;
-  height: 96px;
 }
 
 .main-feed {

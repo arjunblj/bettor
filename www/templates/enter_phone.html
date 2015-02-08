@@ -1,8 +1,6 @@
-<ion-view>
+<ion-view class="phone-entry">
   <ion-content header-shrink ng-controller="SubmitPhoneController">
-    <label class="item item-input">
-      <span class="input-label">Shoot us your number.</span>
-      <input type="tel">
-    </label>
+    <input class="tel-field" type="tel" ng-model="phoneNumber">
+    <button class="button button-block button-calm submit" ng-click="postPhone($event)">Submit</button>
   </ion-content>
 </ion-view>

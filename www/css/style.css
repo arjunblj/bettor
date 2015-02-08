@@ -5,17 +5,28 @@
   font-weight: normal;
   font-style: normal; }
 
-.icon-plus :before {
-  font-family: 'fontawesome'; }
-.icon-plus :after {
-  border: none !important; }
-
-.ionic-logo {
+.login .ionic-logo {
   display: block;
   border: none;
   margin: 50px auto;
   width: 96px;
   height: 96px; }
+.login .sign-up {
+  background-color: #179de5;
+  margin: 0 auto;
+  width: 60%; }
+
+.phone-entry .tel-field {
+  border-bottom: 1px dotted #ccc; }
+.phone-entry .submit {
+  background-color: #179de5;
+  color: #fff !important;
+  width: 60%; }
+
+.icon-plus :before {
+  font-family: 'fontawesome'; }
+.icon-plus :after {
+  border: none !important; }
 
 .main-feed .thumb {
   border-radius: 20% !important; }

@@ -1,8 +1,6 @@
 <ion-view>
   <ion-content header-shrink ng-controller="VerifyCodeController">
-    <label class="item item-input">
-      <span class="input-label">Verify the code we just sent you.</span>
-      <input type="tel">
-    </label>
+    <input type="tel" ng-model="verificationCode">
+    <button class="button button-block button-calm submit" ng-click="postVC($event)">Submit</button>
   </ion-content>
 </ion-view>

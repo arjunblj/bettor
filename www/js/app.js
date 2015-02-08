@@ -1,6 +1,6 @@
 var app;
 
-app = angular.module('app', ['ionic', 'ionic.ion.headerShrink']);
+app = angular.module('app', ['ionic', 'ionic.ion.headerShrink', 'ngCordova']);
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -37,7 +37,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/bet/:bet_id',
     controller: 'BetDetailController'
   });
-  $stateProvider.state('enter-phone', {
+  $stateProvider.state('submit-phone', {
     url: '/submit-phone',
     templateUrl: 'templates/enter_phone.html',
     controller: 'SubmitPhoneController'
@@ -46,6 +46,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/verify-code',
     templateUrl: 'templates/verify-code.html',
     controller: 'VerifyCodeController'
+  });
+  $stateProvider.state('contact-select', {
+    url: '/contact-select',
+    templateUrl: 'templates/contact-select.html',
+    controller: 'ContactSelectController'
   });
   $urlRouterProvider.otherwise('/');
 });
@@ -59,20 +64,19 @@ app.controller('NavigationController', function($scope, $location, $state, $wind
     return $window.location.href = url;
   };
   return $scope.createFixed = function() {
-    return $window.location.href = '/#/compose';
+    return $window.location.href = '/#/contact-select';
   };
 });
 
 app.controller('LoginController', function($scope, $stateParams) {
   return $scope.oauthVenmo = function() {
+    "Venmo OAuth.";
     var ref, url_root;
     url_root = 'https://api.venmo.com/v1/oauth/';
     ref = window.open(url_root + 'authorize?client_id=' + 2344 + '&scope=' + 'make_payments%20access_profile%20access_email%20access_phone%20access_friends' + '&response_type=token');
     return ref.addEventListener('loadstart', function(event) {
-      if (event.url.startsWith('http://westbrook.local:8100/')) {
-        $scope.url = event.url;
-        return ref.close();
-      }
+      $scope.url = event.url;
+      return ref.close();
     });
   };
 });
@@ -83,9 +87,24 @@ app.controller('ComposeController', function($scope, $stateParams) {});
 
 app.controller('BetDetailController', function($scope, $stateParams) {});
 
-app.controller('SubmitPhoneController', function($scope, $stateParams) {});
+app.controller('SubmitPhoneController', function($scope, $stateParams, $window) {
+  var access_token;
+  access_token = app.getParameterByName('access_token');
+  window.localStorage['oauth_token'] = access_token;
+  return $scope.postPhone = function($event) {
+    var phone_num;
+    phone_num = $scope.phoneNumber;
+    return $window.location.href = '/#/verify-code';
+  };
+});
 
-app.controller('VerifyCodeController', function($scope, $stateParams) {});
+app.controller('VerifyCodeController', function($scope, $stateParams, $window) {
+  return $scope.postVC = function($event) {
+    var verification_code;
+    verification_code = $scope.verificationCode;
+    return $window.location.href = '/#/feed';
+  };
+});
 
 var app, _base, _base1;
 
@@ -120,3 +139,13 @@ app.factory('$localstorage', [
     };
   }
 ]);
+
+app.getParameterByName = function(name) {
+  var regex, results;
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+  results = regex.exec(location.search);
+  if (results) {
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+  }
+};

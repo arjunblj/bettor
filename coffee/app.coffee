@@ -1,5 +1,6 @@
 
-app = angular.module('app', ['ionic', 'ionic.ion.headerShrink'])
+app = angular.module('app', ['ionic', 'ionic.ion.headerShrink', 'ngCordova'])
+
 
 app.run(($ionicPlatform) ->
   $ionicPlatform.ready ->
@@ -41,7 +42,7 @@ app.config ($stateProvider, $urlRouterProvider) ->
     controller: 'BetDetailController'
   )
 
-  $stateProvider.state('enter-phone',
+  $stateProvider.state('submit-phone',
     url: '/submit-phone'
     templateUrl: 'templates/enter_phone.html'
     controller: 'SubmitPhoneController'
@@ -51,6 +52,12 @@ app.config ($stateProvider, $urlRouterProvider) ->
     url: '/verify-code'
     templateUrl: 'templates/verify-code.html'
     controller: 'VerifyCodeController'
+  )
+
+  $stateProvider.state('contact-select',
+    url: '/contact-select'
+    templateUrl: 'templates/contact-select.html'
+    controller: 'ContactSelectController'
   )
 
   # If none of the above states are matched, use this as the fallback.

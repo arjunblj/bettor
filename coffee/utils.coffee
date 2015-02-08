@@ -19,3 +19,9 @@ app.factory '$localstorage', ['$window', ($window) ->
   getObject = ->
     return JSON.parse($window.localStorage[key] || '{}');
 ]
+
+app.getParameterByName = (name) ->
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]")
+  regex = new RegExp("[\\?&]" + name + "=([^&#]*)")
+  results = regex.exec(location.search)
+  decodeURIComponent(results[1].replace(/\+/g, " ")) if results
