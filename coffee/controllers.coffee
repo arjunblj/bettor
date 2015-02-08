@@ -62,7 +62,7 @@ app.controller('ContactSelectController', ($scope, $stateParams, $cordovaContact
   document.addEventListener('deviceready', () ->
     $scope.count = 17
     $scope.navigator = $cordovaContacts
-    , false)
+  , false)
 
   $scope.data = {
     selectedContacts: []

@@ -106,6 +106,27 @@ app.controller('VerifyCodeController', function($scope, $stateParams, $window) {
   };
 });
 
+app.controller('ContactSelectController', function($scope, $stateParams, $cordovaContacts) {
+  document.addEventListener('deviceready', function() {
+    $scope.count = 17;
+    return $scope.navigator = $cordovaContacts;
+  }, false);
+  $scope.data = {
+    selectedContacts: []
+  };
+  return $scope.pickContact = function() {
+    return $cordovaContacts.pickContact().then(function(contact) {
+      $scope.err = contact;
+      $scope.data.selectedContacts.push(contact);
+      console.log('Selected contacts=');
+      return console.log($scope.data.selectedContacts);
+    }, function(failure) {
+      $scope.err = failure;
+      return console.log('Bummer, no contacts.');
+    });
+  };
+});
+
 var app, _base, _base1;
 
 app = angular.module('app');

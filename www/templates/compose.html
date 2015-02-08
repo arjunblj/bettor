@@ -1,4 +1,13 @@
 <ion-view>
   <ion-content ng-controller="ComposeController">
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" ng-model="title" placeholder="Title">
+      </label>
+      <label class="item item-input">
+        <input type="text" ng-model="amount" placeholder="Amount">
+      </label>
+    </div>
+    <button class="button button-block button-calm submit" ng-click="postBet($event)">Submit</button>
   </ion-content>
 </ion-view>
